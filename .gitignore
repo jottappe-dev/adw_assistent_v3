@@ -5,3 +5,21 @@ src-tauri/target/
 *.pdb
 .DS_Store
 Thumbs.db
+
+# WhatsApp session cache
+EBWebView/
+adw_assistent/
+
+# Contexto da conversa com Claude
+context.md
+CLAUDE.md
+.claude/
+
+# Logs e progresso local
+*.log
+progress.json
+test-report.json
+
+# Backups
+*.bak
+backups/
