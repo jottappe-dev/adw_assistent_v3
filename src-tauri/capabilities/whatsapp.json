@@ -1,0 +1,10 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "whatsapp-remote",
+  "description": "Allows WhatsApp WebView to communicate via IPC",
+  "windows": ["whatsapp"],
+  "remote": {
+    "urls": ["https://web.whatsapp.com", "https://web.whatsapp.com/*"]
+  },
+  "permissions": ["core:default"]
+}

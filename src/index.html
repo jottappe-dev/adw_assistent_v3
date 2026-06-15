@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline';" />
+  <title>ADW Assistent v3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splashScreen">
+    <div class="splash-content">
+      <div class="splash-logo">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+      </div>
+      <h1 class="splash-title">ADW ASSISTENTE</h1>
+      <p class="splash-subtitle">
+        INICIANDO<span class="splash-dots"><span>.</span><span>.</span><span>.</span></span>
+      </p>
+    </div>
+  </div>
+
+  <!-- CUSTOM TITLEBAR -->
+  <div class="tb" data-tauri-drag-region>
+    <div class="tb-logo">
+      <svg class="tb-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+    </div>
+    <div class="tb-name">ADW</div>
+    <div class="tb-sub">Assistent v3</div>
+    <div class="tb-spacer"></div>
+    <div class="tb-status">
+      <span class="tb-dot"></span>
+    </div>
+    <button class="tb-btn" id="gearBtn" title="Configuracoes">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+    </button>
+    <button class="tb-btn tb-win-btn" id="btnMin" title="Minimizar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+      </svg>
+    </button>
+    <button class="tb-btn tb-win-btn" id="btnMax" title="Maximizar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      </svg>
+    </button>
+    <button class="tb-btn tb-win-btn tb-win-close" id="btnClose" title="Fechar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="6" y1="18" x2="18" y2="6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- TAB NAVIGATION -->
+  <div class="tabs">
+    <div class="tab active" data-tab="dashboard">Dashboard</div>
+    <div class="tab" data-tab="groups">Grupos</div>
+    <div class="tab" data-tab="schedule">Agendamento</div>
+    <div class="tab" data-tab="whatsapp">WhatsApp Web</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- PANE: DASHBOARD -->
+    <div class="pane active" id="pane-dashboard">
+      <div class="dash-grid">
+        <div class="dash-left">
+
+          <!-- Status Card -->
+          <div class="card">
+            <div class="card-title">Status da Tarefa <span class="badge" id="taskBadge">Parado</span></div>
+            <div class="card-sub task-info" id="taskInfo">Nenhuma tarefa em execucao</div>
+          </div>
+
+          <!-- Mode Buttons -->
+          <div class="card">
+            <div class="card-title">Modo de Execucao</div>
+            <div class="mode-row">
+              <div class="mode-btn active" id="modeAuto" data-mode="auto">Auto</div>
+              <div class="mode-btn" id="modeManual" data-mode="manual">Manual</div>
+            </div>
+          </div>
+
+          <!-- Date Range -->
+          <div class="card" id="dateRow">
+            <div class="card-title">Periodo</div>
+            <div class="row2">
+              <div class="cal-wrap" id="cw1">
+                <div class="date-display" id="dd1" onclick="toggleCal(1)">
+                  <span class="date-text placeholder" id="dt1">De</span>
+                  <svg class="date-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                </div>
+                <div class="cal-popup" id="cal1"></div>
+              </div>
+              <div class="cal-wrap" id="cw2">
+                <div class="date-display" id="dd2" onclick="toggleCal(2)">
+                  <span class="date-text placeholder" id="dt2">Ate</span>
+                  <svg class="date-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                </div>
+                <div class="cal-popup" id="cal2"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="btn-row">
+            <button class="btn btn-green" id="btnRun" onclick="runNow()">Executar Agora</button>
+            <button class="btn btn-danger" id="btnStop" onclick="stopNow()" disabled>Parar</button>
+            <button class="btn btn-ghost" id="btnRestart" onclick="restartDownload()" disabled style="display:none">Reiniciar</button>
+          </div>
+
+        </div>
+        <div class="dash-right">
+
+          <!-- Progress Card -->
+          <div class="progress-card" id="progressCard">
+            <div class="prog-phase" id="progPhase">Preparando...</div>
+            <div class="prog-pulse"></div>
+            <div class="prog-bar-wrap">
+              <div class="prog-bar" id="progBar"></div>
+            </div>
+            <div class="prog-date" id="progDate">--</div>
+            <div class="prog-detail">
+              <div class="prog-stats">
+                <div class="prog-stat"><span class="prog-stat-val" id="statFound">0</span><span class="prog-stat-lbl">Encontrados</span></div>
+                <div class="prog-stat"><span class="prog-stat-val" id="statSaved">0</span><span class="prog-stat-lbl">Salvos</span></div>
+                <div class="prog-stat"><span class="prog-stat-val" id="statDays">0</span><span class="prog-stat-lbl">Dias</span></div>
+              </div>
+            </div>
+            <div class="log-wrap" id="progLog"></div>
+          </div>
+
+          <!-- Active Groups -->
+          <div class="card" id="dashGroupsCard">
+            <div class="card-title">Grupos Ativos</div>
+            <div class="group-list" id="dashGroups"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: GROUPS -->
+    <div class="pane" id="pane-groups">
+      <div class="row2">
+        <div class="card-title" id="groupsStatusMsg">Carregando grupos...</div>
+        <button class="btn btn-sm btn-teal" id="btnRefreshGroups" onclick="refreshGroups()">Atualizar</button>
+        <button class="btn btn-sm btn-green" id="btnSaveGroups" onclick="saveGroupsSelection()">Salvar Selecao</button>
+        <button class="btn btn-sm btn-warn" id="btnReloadWpp" onclick="reloadWpp()" style="display:none">Recarregar WhatsApp</button>
+      </div>
+      <div style="margin-bottom:4px">
+        <input class="inp" id="groupSearch" placeholder="Pesquisar grupos..." oninput="filterGroups()" style="max-width:100%" />
+      </div>
+      <div class="card" id="groupsCard">
+        <div class="group-list" id="groupList"></div>
+      </div>
+      <pre id="groupsDebug" style="display:none;background:var(--bg);color:var(--teal);padding:10px;border-radius:6px;font-family:var(--mono);font-size:10px;max-height:200px;overflow:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+    </div>
+
+    <!-- PANE: SCHEDULE -->
+    <div class="pane" id="pane-schedule">
+      <div class="card">
+        <div class="card-title">Agendamento</div>
+
+        <div class="field">
+          <label>Pasta de saida</label>
+          <div style="display:flex;gap:8px">
+            <input class="inp" id="outputDir" placeholder="Selecione a pasta..." readonly />
+            <button class="btn btn-sm btn-ghost" onclick="pickFolder()">...</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Horario</label>
+          <div class="time-row">
+            <input class="inp time-inp" id="schedHour" type="number" min="0" max="23" placeholder="HH" />
+            <span style="color:var(--muted);font-size:18px">:</span>
+            <input class="inp time-inp" id="schedMin" type="number" min="0" max="59" placeholder="MM" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Dias da Semana</label>
+          <div class="days-row" id="daysRow"></div>
+        </div>
+
+        <div class="field">
+          <label>Midias</label>
+          <div class="row2">
+            <div class="toggle-wrap">
+              <div class="toggle on" id="tog-image"><div class="toggle-label">Imagem</div></div>
+            </div>
+            <div class="toggle-wrap">
+              <div class="toggle on" id="tog-video"><div class="toggle-label">Video</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Tentativas maximas</label>
+          <input class="inp" id="maxRetries" type="number" min="1" max="20" value="5" />
+        </div>
+
+        <div id="schedMsg" class="log-wrap" style="margin-top:12px"></div>
+
+        <div class="btn-row" style="margin-top:16px">
+          <button class="btn btn-green" onclick="saveSchedule()">Salvar Agendamento</button>
+          <button class="btn btn-danger" onclick="deleteTask()">Deletar Tarefa</button>
+          <button class="btn btn-ghost" onclick="openLogs()">Abrir Logs</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: WHATSAPP -->
+    <div class="pane" id="pane-whatsapp">
+      <div id="wppPlaceholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <p style="color:var(--muted);margin-top:12px">WhatsApp Web sera exibido aqui.</p>
+        <p style="color:var(--muted2);font-size:13px">Selecione a aba WhatsApp Web para carregar.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-overlay" id="gearOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-header-title">Configuracoes</div>
+        <button class="modal-close" onclick="closeGear()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" /><line x1="6" y1="18" x2="18" y2="6" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Agent Toggle -->
+        <div class="modal-section">
+          <div class="modal-section-title">Tarefa Automatica</div>
+          <div class="agent-toggle-row">
+            <div>
+              <div class="agent-toggle-name" id="agentToggleName">Desabilitado</div>
+              <div class="agent-toggle-sub">Executar download automaticamente no horario agendado</div>
+            </div>
+            <div class="big-toggle" id="agentToggle" onclick="toggleAgent()">
+              <div class="toggle-label"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Initial Date -->
+        <div class="modal-section">
+          <div class="modal-section-title">Data Inicial</div>
+          <p style="color:var(--muted);font-size:13px;margin:0 0 10px">Data a partir da qual buscar mensagens</p>
+          <div class="cal-wrap" id="cwInit">
+            <div class="date-display" id="ddInit" onclick="toggleCal('init')">
+              <span class="date-text placeholder" id="dtInit">Selecionar data</span>
+              <svg class="date-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <div class="cal-popup" id="calInit"></div>
+          </div>
+          <button class="btn btn-sm btn-teal" onclick="saveInitialDate()" style="margin-top:8px">Salvar Data Inicial</button>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="modal-section">
+          <div class="modal-section-title">Zona de Perigo</div>
+          <div class="danger-zone">
+            <div class="danger-row">
+              <div class="danger-row-info">
+                <div class="danger-row-title">Desconectar WhatsApp</div>
+                <div class="danger-row-sub">Forca logout do WhatsApp Web</div>
+              </div>
+              <button class="btn btn-sm btn-warn" onclick="disconnectWpp()">Desconectar</button>
+            </div>
+            <div class="danger-row">
+              <div class="danger-row-info">
+                <div class="danger-row-title">Limpar Sessao</div>
+                <div class="danger-row-sub">Remove dados de sessao do WhatsApp</div>
+              </div>
+              <button class="btn btn-sm btn-warn" onclick="clearSession()">Limpar</button>
+            </div>
+            <div class="danger-row">
+              <div class="danger-row-info">
+                <div class="danger-row-title">Factory Reset</div>
+                <div class="danger-row-sub">Limpa todos os dados e configuracoes</div>
+              </div>
+              <button class="btn btn-sm btn-danger" onclick="factoryReset()">Resetar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

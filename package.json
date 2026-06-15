@@ -1,0 +1,19 @@
+{
+  "name": "adw-assistent-v3",
+  "version": "3.0.0",
+  "description": "ADW Assistent v3 -- WhatsApp media downloader (Tauri)",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.4.1"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "2.4.1",
+    "whatsapp-web.js": "1.34.7",
+    "qrcode-terminal": "0.12.0"
+  }
+}

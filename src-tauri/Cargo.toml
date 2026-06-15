@@ -1,0 +1,29 @@
+[package]
+name = "adw-assistent"
+version = "3.0.0"
+description = "ADW Assistent v3 -- WhatsApp media downloader"
+authors = ["ADW"]
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "adw_assistent_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-shell = "2.2.1"
+tauri-plugin-notification = "2"
+tauri-plugin-fs = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.22"
+time = "=0.3.36"
+tokio = { version = "1", features = ["full"] }
+uuid = { version = "1", features = ["v4"] }
+raw-window-handle = "0.6"
